@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}HOME{% endblock %}
+  {% block main %}
+  <div class="container">
+    <header>
+      <h3>To Do List : {{ ding }}</h3>
+    </header>
+    <section>
+      {% if empty %}
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <p>No Items Found in your To Do List</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            To Do <cite title="Source Title">or Not to Do</cite>
+          </figcaption>
+        </figure>
+      {% else %}
+        <div class="list-group">
+          {% for item in items %}
+          <div class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{item.title}}</h5>
+              <small>{{item.added}}</small>
+            </div>
+            <p class="mb-1">{{item.desc}}</p>
+            <hr />
+            <div class="d-block pt-1 px-2 pb-2 text-end">
+              <a href="/edit_item/{{item.id}}" class="btn btn-primary me-2">Edit</a>
+              <a href="/delete_item/{{item.id}}" class="btn btn-warning me-2">Delete</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
+    <footer>
+      <div class="mt-3 py-3 px-2 border border-1 border-secondary-subtle rounded">
+        <a href="/add_item" type="button" class="btn btn-primary">Add New Item</a>
+      </div>
+    </footer>
+  </div>
+  {% endblock %}

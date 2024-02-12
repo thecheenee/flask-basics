@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}New Item{% endblock %}
+  {% block main %}
+  <div class="container">
+    <header>
+      <h3>To Do List : Edit Item</h3>
+    </header>
+    <section>
+      <form enctype="application/x-www-form-urlencoded" action="/edit_item/{{id}}" method="POST">
+        <div class="mb-3">
+          <label for="item_title" class="form-label">Task Title</label>
+          <input type="text" class="form-control" name="item_title" id="item_title" placeholder="Call Jensen" value="{{item.title}}">
+        </div>
+        <div class="mb-3">
+          <label for="item_description" class="form-label">Task Description</label>
+          <textarea class="form-control" name="item_description" id="item_description" rows="3">{{item.description}}</textarea>
+        </div>
+        <div class="mb-3">
+          <a href="/" type="button" class="btn btn-secondary me-2">Cancel</a>
+          <button type="submit" class="btn btn-secondary">Save Details</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  
+  {% endblock %}

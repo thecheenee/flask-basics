@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+  {% block main %}
+  <div class="container">
+    <header>
+      <h3>Sign Up</h3>
+    </header>
+    <section>
+      <div class="user-registration border border-1 border-secondary-subtle rounded p-3">
+        <form action="\register" enctype="application/x-www-form-urlencoded" method="POST">
+          {% if exists_error %}
+          <div class="alert alert-danger" role="alert">
+            Email ID already Exists. Please <a href="\login" class="fw-bold">Login here</a> with your email and valid password.
+          </div>          
+          {% endif %}
+          <div class="mb-3">
+            <label for="username" class="form-label">Email address</label>
+            <input type="email" class="form-control {% if user_error %}is-invalid{% endif %}" id="username" name="username" placeholder="name@example.com" required>
+            <div class="invalid-feedback">
+              Please enter a valid email ID.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control {% if pasw_error %}is-invalid{% endif %}" id="password" name="password" placeholder="124cwqc" required>
+            <div class="invalid-feedback">
+              Password Length should be more than 5 characters
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="cpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control {% if nomatch_error %}is-invalid{% endif %}" id="cpassword" name="cpassword" placeholder="124cwqc" required>
+            <div class="invalid-feedback">
+              Passwords do not match
+            </div>
+          </div>
+          <div class="mb-3">
+            <p>
+              Already Signed up? <a href="/login" class="link-underline link-underline-opacity-0 fw-bold">click here</a>
+            </p>
+          </div>
+          <div class="mb-2">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="reset" class="btn btn-primary">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  {% endblock %}

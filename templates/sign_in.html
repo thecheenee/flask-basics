@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Log In{% endblock %}
+  {% block main %}
+  <div class="container">
+    <header>
+      <h3>Log in</h3>
+    </header>
+    <section>
+      <div class="user-login border border-1 border-secondary-subtle rounded p-3">
+        <form action="\login" enctype="application/x-www-form-urlencoded" method="POST">
+          <div class="mb-3">
+            <label for="username" class="form-label">Email address</label>
+            <input type="email" class="form-control {% if user_error %}is-invalid{% endif %}" id="username" name="username" placeholder="name@example.com" required>
+            <div class="invalid-feedback">
+              Please enter a valid email ID.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Email address</label>
+            <input type="password" class="form-control {% if pasw_error %}is-invalid{% endif %}" id="password" name="password" placeholder="124cwqc" required>
+            <div class="invalid-feedback">
+              User ID or Password is incorrect
+            </div>
+          </div>
+          <div class="mb-3">
+            <p>
+              Do not have an account yet? <a href="/register" class="link-underline link-underline-opacity-0 fw-bold">click here</a>
+            </p>
+          </div>
+          <div class="mb-2">
+            <button type="submit" class="btn btn-primary">Log In</button>
+            <button type="reset" class="btn btn-primary">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  {% endblock %}
