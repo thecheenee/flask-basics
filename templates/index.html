@@ -16,6 +16,9 @@
           </figcaption>
         </figure>
       {% else %}
+        <p class="lead">
+          Hi <strong>{{user_data.name}}</strong>, you have {{user_data.tasks}} active tasks
+        </p>
         <div class="list-group">
           {% for item in items %}
           <div class="list-group-item list-group-item-action" aria-current="true">
